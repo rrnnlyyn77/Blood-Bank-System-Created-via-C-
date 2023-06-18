@@ -177,7 +177,7 @@ void getNewRecipientrDetails(newRecipient& Newrecipient)
 }
 void dispNewRecipientDetails(const newRecipient& Newrecipient)
 {
-    cout << "Email : " << Newrecipieent.email << endl;
+    cout << "Email : " << Newrecipient.email << endl;
     cout << "Password : " << Newrecipient.password;
     cout << "Confirm Password : " << Newrecipient.confirmPassword;
     cout << "Establishment Name : " << Newrecipient.establishmentName;
