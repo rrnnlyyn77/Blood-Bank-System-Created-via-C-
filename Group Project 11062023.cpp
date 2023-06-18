@@ -9,6 +9,191 @@
 
 using namespace std;
 
+//19-06-2023-rona
+//to validate doB (dd//mm//yy)
+bool validateDate(string& doB)
+{
+    regex datepattern("^\\d{2}/\\d{2}/\\d{2}$");
+    return regex_match (doB, datepattern);
+}
+//to validate first name
+bool validateFname(string& fName)
+{
+    regex fNameValidation("[A-Za-z]{1,50}");
+    return regex_match(fName, fNameValidation);
+}
+//to validate last name
+bool validateLname(string& lName)
+{
+    regex lNameValidation("[A-Za-z]{1,50}");
+    return regex_match(lName, lNameValidation);
+}
+//to validate email
+bool validateEmail(string& email)
+{
+    regex emailValidation("([a-zA-z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})");
+    return regex_match(email, emailValidation);
+}
+//to validate contact no. (mobile & landline)
+bool validateContactNo(string & nzContactNo)
+{
+    regex nzNoValidation("\\+?64[- ]?\\d{1,4}[- ]?\\d{4,10}");
+    return regex_match(nzContactNo, nzNoValidation);
+
+    regex nzLandlineValidation("^(0800|09)\\{7}$");
+    return regex_match(nzContactNo, nzLandlineValidation);
+}
+//to validate password
+bool validatePassword(string& password)
+{
+    regex passwordValidation("([a-zA-Z0-9@#$%^&+=]{10,})");//10 characters minimum
+    return regex_match(password, passwordValidation);
+}
+// to validate username
+bool validateUsername(string& userN)
+{
+    regex userNValidation("([a-zA-Z0-9_]{6,})"); //6characters minimum
+    return regex_match(userN, userNValidation);
+}
+//to validate NZBlood donor ID (2 letters, 6 nos.)
+bool validateDonorID(string& donorID)
+{
+    regex donorIDValidation("^[A-Z]{2}\\d{6}$");
+    return regex_match(donorID, donorIDValidation);
+}
+
+//to validate new donor age (must be >=16 or <=71 years old)
+bool validateNewDonorAge(int& newDonorAge)
+{
+    return (newDonorAge >= 16 && newDonorAge <= 71);
+}
+//to validate new donor weight (must be above 50kgs)
+bool validateNewDonorWeight(int & newDonorWeight)
+{
+    return (newDonorWeight > 50);
+}
+//to validate new donor height (must be at least 150cm tall)
+bool validateNewDonorHeight (int & newDonorHeight)
+{
+    return (newDonorHeight >= 150);
+}
+
+//new-donor form - RONA
+//new donor details
+struct newDonor {
+    string email, 
+        password, 
+        confirmPassword, 
+        fName, 
+        lName, 
+        userName,
+        doB, 
+        mobileNo, 
+        donorID;
+};
+
+//to gather new donor details
+void getNewDonorDetails(newDonor& Newdonor)
+{
+    cout << "Create a Donor Profile Today!!!" << endl;
+    cout << "\n\n";
+
+    cout << "Email : "; getline(cin, Newdonor.email);
+    cout << "Password (min. 6 characters, contain 1 letter, 1 number) : "; 
+    getline(cin, Newdonor.password);
+    cout << "Confirm Password : "; getline(cin, Newdonor.confirmPassword);
+    cout << "First Name : "; getline(cin, Newdonor.fName);
+    cout << "Last Name : "; getline(cin, Newdonor.lName);
+    cout << "Provide a username : "; getline(cin, Newdonor.userName);
+    cout << "Date of Birth : "; getline(cin, Newdonor.doB);
+    cout << "Mobile Phone Number (starting with +64) : "; getline(cin, Newdonor.mobileNo);
+    cout << "Donor ID (optional) : "; getline(cin, Newdonor.donorID);
+}
+
+//health status details required (for new donors only)
+struct healthStatsForm {
+    int age;
+    float weight;
+    //others (yY/nN characters only)
+    char covid19,
+        tattoosAndpiercings,
+        travel,
+        pregnancy;
+};
+//to gather new donor health status deteils
+void getNDHealthStatus(healthStatsForm& Healthstatsform)
+{
+    cout << "Health Status Form (for new donors only)" << endl;
+    cout << "\n\n";
+
+    cout << "Age (must be 16 to 71 years old) : "; cin >> Healthstatsform.age;
+    cout << "Weight (must be 50kg or above) : "; cin >> Healthstatsform.weight;
+
+    cout << "Has it been 7 days (or more) since you've had COVID-19 symptoms? : "; cin >> Healthstatsform.covid19;
+    cout << "Has it been 3 months (or more) since you've had any tattoos and/or piercings? : "; cin >> Healthstatsform.tattoosAndpiercings;
+
+    cout << "Travel Eligibility Information";
+    cout << "\n\nYou must not have lived in the United Kingdom, France or the Republic of Ireland between 1980 and 1996 for a cumulative 6 months or more." << endl;
+    cout << "\n";
+    cout << "Do you meet the criteria above? (Y/N) : "; cin >> Healthstatsform.travel;
+
+    cout << "Pregnancy Eligibility Information";
+    cout << "\n\nFollowing pregnancy, you will not be eligible to donate blood or plasma for as many months as your pregnancy was long. In most cases, this is 9 months." << endl;
+    cout << "\n";
+    cout << "Are you pregnant? (Y/N) : "; cin >> Healthstatsform.pregnancy;
+
+}
+//to display form completion message (for new donors)
+void dispFormCompletionMessageNDs()
+{
+    cout << "You have successfully completed the following forms : ";
+    cout << "\n\n1.New Donor Basic Information\n2.Health Status Form";
+    cout << "\n\nYou are now registered in the NZBlood system and may log in as an existing donor next time.";
+    cout << "\n\nThank You for helping us save lives by donating your blood." << endl;
+}
+
+//new recipient details
+struct newRecipient {
+    string
+        email,
+        password,
+        confirmPassword,
+        establishmentName,
+        userName,
+        contactNo;
+};
+void getNewRecipientrDetails(newRecipient& Newrecipient)
+{
+    cout << "Create a Recipient Profile Today!!!" << endl;
+    cout << "\n\n";
+
+    cout << "Email : "; getline(cin, Newrecipient.email);
+    cout << "Password (min. 6 characters, contain 1 letter, 1 number) : ";
+    getline(cin, Newrecipient.password);
+    cout << "Confirm Password : "; getline(cin, Newrecipient.confirmPassword);
+    cout << "Establishment Name : "; getline(cin, Newrecipient.establishmentName);
+    cout << "Provide a username : "; getline(cin, Newrecipient.userName);
+    cout << "Contact Number : "; getline(cin, Newrecipient.contactNo);
+}
+void dispNewRecipientDetails(const newRecipient& Newrecipient)
+{
+    cout << "Email : " << Newrecipieent.email << endl;
+    cout << "Password : " << Newrecipient.password;
+    cout << "Confirm Password : " << Newrecipient.confirmPassword;
+    cout << "Establishment Name : " << Newrecipient.establishmentName;
+    cout << "Provide a username : " << Newrecipient.userName;
+    cout << "Contact Number : " << Newrecipient.contactNo;
+}
+
+//to display form completion message (for new recipients)
+void dispFormCompletionMessageNRs()
+{
+    cout << "You have successfully completed the New Recipient form ";
+    cout << "\n\nYou are now registered in the NZBlood system and may log in as an existing recipient next time.";
+    cout << "\n\nWe will do our best to provide you with your needs and help you save lives." << endl;
+}
+
+
 void AboutCompany()
 {
     cout << "                                                                              About the company:\n";
@@ -40,24 +225,24 @@ void AboutCompany()
         cout << "                        |donor registry.                                                                                                     |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |We currently have 117,000 amazing donors who help save the lives of 30,000 people every year.                       |\n";
-        cout << "                        |But with a growing and ageing population, and more blood and plasma being needed for patients – New Zealand is      |\n";
-        cout << "                        |facing higher demands than ever for blood and blood products,” says Asuka Burge, NZBS National Marketing &          |\n";
+        cout << "                        |But with a growing and ageing population, and more blood and plasma being needed for patients â€“ New Zealand is      |\n";
+        cout << "                        |facing higher demands than ever for blood and blood products,â€ says Asuka Burge, NZBS National Marketing &          |\n";
         cout << "                        |Communications Manager. The number of people on the donor registry has only grown by 9,000 donors in the past five  |\n";
-        cout << "                        |years. That’s why we are always looking to recruit new donors to replace donors who for many reasons can no longer  |\n";
+        cout << "                        |years. Thatâ€™s why we are always looking to recruit new donors to replace donors who for many reasons can no longer  |\n";
         cout << "                        |donate.                                                                                                             |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |However, we have reached a tipping point. If we can’t encourage more people to join the donor registry,             |\n";
+        cout << "                        |However, we have reached a tipping point. If we canâ€™t encourage more people to join the donor registry,             |\n";
         cout << "                        |we may no longer continue to be self-reliant for blood and plasma products in Aotearoa. Every 18 minutes in New     |\n";
         cout << "                        |Zealand, someone requires a lifesaving transfusion of blood or plasma. Currently, less than four percent of         |\n";
         cout << "                        |the eligible population are donating. NZBS needs 40,000 new donors in the next 12 months to ensure it can continue  |\n";
         cout << "                        |to be self - reliant and meet demand. People can find out if they are eligible to donate by visiting                |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |People can find out if they are eligible to donate by visiting https://www.nzblood.co.nz/, or calling 0800 448 325. |\n";
-        cout << "                        |If they’re likely to be eligible, they can book an appointment at their nearest donor centre or mobile drive by     |\n";
-        cout << "                        |downloading the New Zealand Blood Service Donor App. We’re extremely grateful to our dedicated community of         |\n";
+        cout << "                        |If theyâ€™re likely to be eligible, they can book an appointment at their nearest donor centre or mobile drive by     |\n";
+        cout << "                        |downloading the New Zealand Blood Service Donor App. Weâ€™re extremely grateful to our dedicated community of         |\n";
         cout << "                        |voluntary donors who help ensure that blood and products are always available for whomever may need them, says Ms   |\n";
-        cout << "                        |Burge. If you’ve ever considered donating, there is no better time to find your ‘why’ and have a go than this       |\n";
-        cout << "                        |National Blood Donor Week. It is only with New Zealanders’ recognition and support for self - reliance that we can  |\n";
+        cout << "                        |Burge. If youâ€™ve ever considered donating, there is no better time to find your â€˜whyâ€™ and have a go than this       |\n";
+        cout << "                        |National Blood Donor Week. It is only with New Zealandersâ€™ recognition and support for self - reliance that we can  |\n";
         cout << "                        |continue to protect our blood supply for years to come.                                                             |\n";
         cout << "                        |____________________________________________________________________________________________________________________|\n";
         cout << "\n";
@@ -69,7 +254,7 @@ void AboutCompany()
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |July 1 will mark a milestone birthday for New Zealand Blood Service as we celebrate turning 25!                     |\n";
         cout << "                        |NZBS was established in 1998 to create a single, integrated blood service for all of New Zealand.Our job then, like |\n";
-        cout << "                        |today, was to ensure the safe and sufficient supply of blood and blood products – a job we couldn’t do without you, |\n";
+        cout << "                        |today, was to ensure the safe and sufficient supply of blood and blood products â€“ a job we couldnâ€™t do without you, |\n";
         cout << "                        |our donors. During the past 25 years, more than 600,000 donors have stepped up to help improve and save the lives of|\n";
         cout << "                        |more than half a million people.Your contributions have been staggering - we have received more than:               |\n";
         cout << "                        |                                                                                                                    |\n";
@@ -77,16 +262,16 @@ void AboutCompany()
         cout << "                        |865,000 plasma donations, and                                                                                       |\n";
         cout << "                        |98,000 platelet donations                                                                                           |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |We have also sent more than 1.3 million kilograms of plasma to Australia, where it’s transformed into 11 different  |\n";
-        cout << "                        |products that are returned to New Zealand for use by people here.And we’ve grown – we are now home to Organ Donation|\n";
-        cout << "                        |New Zealand, New Zealand’s National Heart Valve Bank, and the New Zealand Bone Marrow Donor Registry.               |\n";
+        cout << "                        |We have also sent more than 1.3 million kilograms of plasma to Australia, where itâ€™s transformed into 11 different  |\n";
+        cout << "                        |products that are returned to New Zealand for use by people here.And weâ€™ve grown â€“ we are now home to Organ Donation|\n";
+        cout << "                        |New Zealand, New Zealandâ€™s National Heart Valve Bank, and the New Zealand Bone Marrow Donor Registry.               |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |Much has changed over the past 25 years; New Zealand’s population has grown from 3.8 million to five million; new   |\n";
-        cout << "                        |diseases, tests, technologies, and treatments have been introduced; we’ve navigated challenges such as the          |\n";
-        cout << "                        |Christchurch earthquakes and COVID-19. What hasn’t changed, is the consistent and growing need for blood and plasma,|\n";
+        cout << "                        |Much has changed over the past 25 years; New Zealandâ€™s population has grown from 3.8 million to five million; new   |\n";
+        cout << "                        |diseases, tests, technologies, and treatments have been introduced; weâ€™ve navigated challenges such as the          |\n";
+        cout << "                        |Christchurch earthquakes and COVID-19. What hasnâ€™t changed, is the consistent and growing need for blood and plasma,|\n";
         cout << "                        |the selfless generosity of our donors, the heartfelt gratitude of recipients, and the commitment of our staff.      |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |This July, the best birthday gift we could receive is your donation – we look forward to seeing you!                |\n";
+        cout << "                        |This July, the best birthday gift we could receive is your donation â€“ we look forward to seeing you!                |\n";
         cout << "                        |____________________________________________________________________________________________________________________|\n";
         break;
 
@@ -106,16 +291,16 @@ void AboutCompany()
         cout << "                        |campus. New Zealand Blood Service (NZBS) will lease and operate the purpose-built facility, which was constructed by|\n";
         cout << "                        |Te Whatu Ora Health New Zealand in a joint arrangement with NZBS.                                                   |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |Te Whatu Ora Waikato’s Interim District Co-Director Chris Lowry says the $2 million blood bank is the first new     |\n";
+        cout << "                        |Te Whatu Ora Waikatoâ€™s Interim District Co-Director Chris Lowry says the $2 million blood bank is the first new     |\n";
         cout << "                        |building to be opened on the campus in more than a decade.                                                          |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |Having blood and blood products readily to hand is essential for the timely care of our patients. As a tertiary     |\n";
-        cout << "                        |centre and trauma hospital, it’s an essential service we cannot do without.                                         |\n";
+        cout << "                        |centre and trauma hospital, itâ€™s an essential service we cannot do without.                                         |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |Each week the Waikato Blood Bank issues around 180 units of red blood cells and 35 units of platelets as well as    |\n";
         cout << "                        |testing around 100 blood samples to match hospital patients with compatible blood products.                         |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |Often, it’s not until you or someone close to you needs blood to survive that you think about how these products    |\n";
+        cout << "                        |Often, itâ€™s not until you or someone close to you needs blood to survive that you think about how these products    |\n";
         cout << "                        |make their way to you. A lot happens between when our donors generously donate and when a patient receives the end  |\n";
         cout << "                        |product - blood banks are a vital link in that lifesaving chain.                                                    |\n";
         cout << "                        |                                                                                                                    |\n";
@@ -132,10 +317,10 @@ void AboutCompany()
         cout << "                        |____________________________________________________________________________________________________________________|\n";
         cout << "                        |September 2022                                                                                                      |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |The Sky Tower, New Zealand’s largest needle, is being lit up gold on Monday September 5 to highlight the sky-high   |\n";
+        cout << "                        |The Sky Tower, New Zealandâ€™s largest needle, is being lit up gold on Monday September 5 to highlight the sky-high   |\n";
         cout << "                        |need for plasma and plasma donors.                                                                                  |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |The golden needle marks the start of New Zealand Blood Service’s (NZBS) new campaign dedicated to shining a light on|\n";
+        cout << "                        |The golden needle marks the start of New Zealand Blood Serviceâ€™s (NZBS) new campaign dedicated to shining a light on|\n";
         cout << "                        |the increasing need of plasma and the importance it plays in helping people manage ongoing health conditions.       |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |In a major shift in demand, NZBS now requires more plasma donations than blood donations, with more than 7000 new   |\n";
@@ -144,7 +329,7 @@ void AboutCompany()
         cout << "                        |And right now, it is tracking more than 5000 donations behind where it needs to be.                                 |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |Asuka Burge, NZBS National Marketing and Communications Manager, says the demand is growing every year with the     |\n";
-        cout << "                        |coming year’s target jumping up by 12.9%.                                                                           |\n";
+        cout << "                        |coming yearâ€™s target jumping up by 12.9%.                                                                           |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |That is being driven by the increasing need for immunoglobulin products, also known as Ig, such as Intragam P and   |\n";
         cout << "                        |Evogam. These products are used for a variety of treatments for people with low levels of antibodies, either through|\n";
@@ -152,10 +337,10 @@ void AboutCompany()
         cout << "                        |disorders.                                                                                                          |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |Many patients who use Ig products require lifetime treatment on a regular basis, some as frequently as once a week. |\n";
-        cout << "                        |These people can’t just skip treatment, so we need Kiwis to not skip giving.                                        |\n";
+        cout << "                        |These people canâ€™t just skip treatment, so we need Kiwis to not skip giving.                                        |\n";
         cout << "                        |                                                                                                                    |\n";
-        cout << "                        |To become a plasma donor, you need to meet donor eligibility criteria – including being over 50kg, aged 16-70       |\n";
-        cout << "                        |and be over 150cm tall. You can find out if you’re eligible to donate by visiting                                   |\n";
+        cout << "                        |To become a plasma donor, you need to meet donor eligibility criteria â€“ including being over 50kg, aged 16-70       |\n";
+        cout << "                        |and be over 150cm tall. You can find out if youâ€™re eligible to donate by visiting                                   |\n";
         cout << "                        |https://www.nzblood.co.nz/give-plasma/.                                                                             |\n";
         cout << "                        |                                                                                                                    |\n";
         cout << "                        |To help manage the increasing need for plasma, NZBS has taken measures to help make it easier for Kiwis to donate   |\n";
@@ -183,7 +368,7 @@ void LatestNews()
     cout << "\n";
     cout << "                                                                        **** LATEST NEWS ****                                                 \n";
     cout << "                         ____________________________________________________________________________________________________________________ \n";
-    cout << "                        |                           Vyron: ‘Because of plasma donors, I have my whole life ahead of me                       |\n";
+    cout << "                        |                           Vyron: â€˜Because of plasma donors, I have my whole life ahead of me                       |\n";
     cout << "                        |____________________________________________________________________________________________________________________|\n";
     cout << "                        |May 2023                                                                                                            |\n";
     cout << "                        |                                                                                                                    |\n";
@@ -202,34 +387,34 @@ void LatestNews()
     cout << "                        |____________________________________________________________________________________________________________________|\n";
     cout << "                        |April 2023                                                                                                          |\n";
     cout << "                        |                                                                                                                    |\n";
-    cout << "                        |A big reason why we don’t often visit the Queenstown Lakes District to collect is because it poses some logistical  |\n";
+    cout << "                        |A big reason why we donâ€™t often visit the Queenstown Lakes District to collect is because it poses some logistical  |\n";
     cout << "                        |and financial challenges for us in terms of flying donated blood back to Christchurch each day for processing in a  |\n";
     cout << "                        |timely manner once it has been collected.                                                                           |\n";
     cout << "                        |                                                                                                                    |\n";
-    cout << "                        |Despite this, the Southern team listened to the feedback they’d received from donors and were able to work around   |\n";
+    cout << "                        |Despite this, the Southern team listened to the feedback theyâ€™d received from donors and were able to work around   |\n";
     cout << "                        |that by collecting earlier in the day.                                                                              |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |The mobile drive took place at St Margaret's Church in Frankton over three days aiming to collect 200 donations     |\n";
     cout << "                        |while in the area. We actively promoted the mobile blood drive in the Queenstown Lakes District four weeks in       |\n";
-    cout << "                        |advance to ensure we had the best shot at filling appointments – posters, press ads and community FB posts were used|\n";
+    cout << "                        |advance to ensure we had the best shot at filling appointments â€“ posters, press ads and community FB posts were used|\n";
     cout << "                        |to help spread the word. Kris Perkins, a local mum, and marketer whose four year old son had recently been the      |\n";
-    cout << "                        |recipient of blood, provided important on the ground support – connecting us to business and community groups. We   |\n";
-    cout << "                        |also had a lot of media interest from local newspapers about what we were doing – this coverage helped us educate   |\n";
+    cout << "                        |recipient of blood, provided important on the ground support â€“ connecting us to business and community groups. We   |\n";
+    cout << "                        |also had a lot of media interest from local newspapers about what we were doing â€“ this coverage helped us educate   |\n";
     cout << "                        |people about what it had been so long since we last visited and promote the importance of getting involved.         |\n";
     cout << "                        |The Queenstown Lakes District community turned out in force to ensure we hit our collection targets during the three|\n";
     cout << "                        |days we were there.                                                                                                 |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |We collected 217 donations saving up to 650 lives. A great result!                                                  |\n";
     cout << "                        |                                                                                                                    |\n";
-    cout << "                        |Linda Burt, our Southern Donor Relations Coordinator told us “Queenstown was very chilly but despite that, the      |\n";
+    cout << "                        |Linda Burt, our Southern Donor Relations Coordinator told us â€œQueenstown was very chilly but despite that, the      |\n";
     cout << "                        |mobile went well. It was VERY well received by the residents of not only Queenstown but surrounding areas like      |\n";
-    cout << "                        |Wanaka. A mix of people showed up to donate. There were a lot of walkin’s plus lapsed and new donors provided       |\n";
-    cout << "                        |support which was fantastic. People were enquiring when we’re coming back as they’re really hoping to see us again  |\n";
-    cout << "                        |soon. We’ll give some thought to that taking into consideration the logistical challenges we face collecting in     |\n";
+    cout << "                        |Wanaka. A mix of people showed up to donate. There were a lot of walkinâ€™s plus lapsed and new donors provided       |\n";
+    cout << "                        |support which was fantastic. People were enquiring when weâ€™re coming back as theyâ€™re really hoping to see us again  |\n";
+    cout << "                        |soon. Weâ€™ll give some thought to that taking into consideration the logistical challenges we face collecting in     |\n";
     cout << "                        |this region.                                                                                                        |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |Though teamwork, perseverance and thinking differently about how to tackle a big challenge like this just goes to   |\n";
-    cout << "                        |show what’s possible when you put your mind to it.                                                                  |\n";
+    cout << "                        |show whatâ€™s possible when you put your mind to it.                                                                  |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |Thanks to everyone in Queenstown Lakes District involved in helping us.                                             |\n";
     cout << "                        |____________________________________________________________________________________________________________________|\n";
@@ -251,7 +436,7 @@ void EligibilityCriteria()
     cout << "                        |birthday. Existing * donors can donate until their 75th birthday and may continue to donate until their 81st        |\n";
     cout << "                        |birthday, subject to authorisation from a NZBS Medical Officer. Lapsed** donors who have passed their 71st birthday |\n";
     cout << "                        |may be eligible to donate, subject to authorisation by a NZBS Medical Officer.                                      |\n";
-    cout << "                        |* Existing donors – have donated blood within the last 2 years.                                                     |\n";
+    cout << "                        |* Existing donors â€“ have donated blood within the last 2 years.                                                     |\n";
     cout << "                        |* *Lapsed donors - are those who have donated before more than 2 years ago.                                         |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |Weight:                                                                                                             |\n";
@@ -266,12 +451,12 @@ void EligibilityCriteria()
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |COVID-19:                                                                                                           |\n";
     cout << "                        |                                                                                                                    |\n";
-    cout << "                        |If you’ve had COVID-19, you’ll need to wait seven days after you are free of symptoms or after the date of your last|\n";
+    cout << "                        |If youâ€™ve had COVID-19, youâ€™ll need to wait seven days after you are free of symptoms or after the date of your last|\n";
     cout << "                        |positive test (if you have no symptoms) before you can donate blood or plasma.                                      |\n";
     cout << "                        |                                                                                                                    |\n";
     cout << "                        |Tattoos and Piercings:                                                                                              |\n";
     cout << "                        |                                                                                                                    |\n";
-    cout << "                        |If you‘ve recently had a tattoo (including cosmetic tattoos, such as microblading), cosmetic injectables or a body  |\n";
+    cout << "                        |If youâ€˜ve recently had a tattoo (including cosmetic tattoos, such as microblading), cosmetic injectables or a body  |\n";
     cout << "                        |piercing, you must wait 3 months from the date of the procedure before you can donate                               |\n";
     cout << "                        |Note: If the cosmetic injectable or body piercing was performed by a registered health professional(i.e.pharmacist, |\n";
     cout << "                        |GP) and any inflammation has settled completely, you can donate after 12 hours.                                     |\n";
