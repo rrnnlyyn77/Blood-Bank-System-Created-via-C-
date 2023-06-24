@@ -1,0 +1,22 @@
+***Request from Recipient***
+Username: Hospital1
+Blood or Plasma: Blood
+Blood Type Required: A+
+Number of Bags: 3
+------------------------------------------
+***Request from Recipient***
+Username: Hospital2
+Establishment Name: Test
+Date Required: Test
+Blood or Plasma: Test
+Blood Type Required: Test
+Number of Bags: 4
+------------------------------------------
+***Request from Recipient***
+Username: Test1
+Establishment Name: test 3
+Date Required: test3
+Blood or Plasma: test3
+Blood Type Required: test3
+Number of Bags: 9
+------------------------------------------
