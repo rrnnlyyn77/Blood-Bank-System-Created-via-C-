@@ -1,0 +1,6 @@
+﻿  103.2NZBloodBank_Main.cpp
+C:\Users\rnlyn\source\repos\103.2NZBloodBank_Main\103.2NZBloodBank_Main.cpp(33,9): warning C4101: 'recipientChoice': unreferenced local variable
+C:\Users\rnlyn\source\repos\103.2NZBloodBank_Main\103.2NZBloodBank_Main.cpp(1047,10): warning C4101: 'details': unreferenced local variable
+C:\Users\rnlyn\source\repos\103.2NZBloodBank_Main\103.2NZBloodBank_Main.cpp(389): warning C4715: 'donorMenu': not all control paths return a value
+C:\Users\rnlyn\source\repos\103.2NZBloodBank_Main\103.2NZBloodBank_Main.cpp(257): warning C4715: 'recipientMenu': not all control paths return a value
+  103.2NZBloodBank_Main.vcxproj -> C:\Users\rnlyn\source\repos\103.2NZBloodBank_Main\Debug\103.2NZBloodBank_Main.exe
