@@ -1,0 +1,21 @@
+***Request from Recipient***
+Username: Hospital1
+Establishment Name: Auckland Hospital
+Date Required: 25/07/2023
+What Blood Type do you require - Eg. A+, O+, B+ or Plasma?: A+
+Number of Bags required (1 bag = 470ml per bag): 3
+------------------------------------------
+***Request from Recipient***
+Username: Hospital2
+Establishment Name: Wellington Hospital
+Date Required: 25/08/23
+What Blood Type do you require - Eg. A+, O+, B+ or Plasma? A+
+Number of Bags required (1 bag = 470ml per bag): 3
+------------------------------------------
+***Request from Recipient***
+Username: Test1
+Establishment Name: Test1
+Date Required: Test1
+What Blood Type do you require - Eg. A+, O+, B+ or Plasma? A+
+Number of Bags required (1 bag = 470ml per bag): 4
+------------------------------------------

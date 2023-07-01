@@ -1,0 +1,6 @@
+Donation Inventory:
+-----------------------
+O+             10          bags
+B+	       20          bags
+A+             30          bags
+B-             40          bags

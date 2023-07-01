@@ -1,0 +1,14 @@
+Username: AUC@123auc
+Password: AUC@123auc
+Email: hospital@ah.com
+Establishment Name: Auckland Hospital
+Phone: 09 7824 247
+NZ Address: 2 Park Road, Grafton, Auckland, 1023
+
+Username: WEL@123wel
+Password: WEL@123wel
+Email: hospital@wh.com
+Establishment Name: Wellington Hospital
+Phone: 09 7825 673
+NZ Address: 201 Murphys Road, Wellington, 2016
+
