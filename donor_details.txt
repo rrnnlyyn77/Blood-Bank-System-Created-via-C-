@@ -1,23 +1,31 @@
+Username: KateP
+Password: Kate1234
+Email: kate123@kate.com
+First Name: Kate
+Last Name: Perry
+Date of Birth: 09/08/97
+Mobile Phone Number: +64227482842
+Donor ID: DO123456 
 
 Username: Rona
-Password: Ronar@5678
-Email: ronaR37@gmail.com
+Password: rona5678
+Email: ronaR@nz.com
 First Name: Rona
 Last Name: Ruaro
 Date of Birth: 07/03/04
-Mobile Phone Number: +642172361863
+Mobile Phone Number: +64233532453
 Donor ID: 
 
 Username: Dhru
-Password: Dhrun@1234
-Email: dhruN345@gmail.com
+Password: Dhru1234
+Email: Dhru@nz.com
 First Name: Dhru
 Last Name: Naidoo
 Date of Birth: 01/02/98
-Mobile Phone Number: +64275249162
-Donor ID:
+Mobile Phone Number: +64215678354
+Donor ID: 
 
-Donor ID: Username: Sam
+Username: Sam
 Password: Samt@1234
 Email: samT567@gmail.com
 First Name: Sam
@@ -25,7 +33,7 @@ Last Name: Teeves
 Date of Birth: 23/05/99
 Mobile Phone Number: +64327897163
 Donor ID: 
- 
+
 Username: BeaD
 Password: b34h12345D
 Email: BeaD@yahoo.com
@@ -35,11 +43,3 @@ Date of Birth: 09/08/97
 Mobile Phone Number: +64238264924
 Donor ID:  
 
-Username: GeorgeW
-Password: jsh7sdhj
-Email: hjhjsh@yahoo.com
-First Name: George
-Last Name: Washington
-Date of Birth: 09/07/98
-Mobile Phone Number: +64224738592
-Donor ID: 

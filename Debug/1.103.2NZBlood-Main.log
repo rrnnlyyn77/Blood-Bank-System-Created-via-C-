@@ -1,0 +1,7 @@
+﻿  1.103.2NZBlood-Main.cpp
+C:\Users\rnlyn\source\repos\1.103.2NZBlood-Main\1.103.2NZBlood-Main.cpp(829,10): warning C4101: 'details': unreferenced local variable
+  functions_and_definitions.cpp
+C:\Users\rnlyn\source\repos\1.103.2NZBlood-Main\functions_and_definitions.cpp(25,27): warning C4129: '.': unrecognized character escape sequence
+C:\Users\rnlyn\source\repos\1.103.2NZBlood-Main\functions_and_definitions.cpp(701,29): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  1.103.2NZBlood-Main.vcxproj -> C:\Users\rnlyn\source\repos\1.103.2NZBlood-Main\Debug\1.103.2NZBlood-Main.exe
