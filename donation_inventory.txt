@@ -1,5 +1,6 @@
 Donation Inventory
 -----------------------
-AB-            1          bags
-O+             1          bags
-Plasma         1          bags
+A-             1          bags
+O-             1          bags
+Plasma         3          bags
+RHNull         1          bags

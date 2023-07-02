@@ -1,0 +1,21 @@
+Username: Test1
+Password: test123
+Email: testhospital@test.com
+Establishment Name: Test
+Phone: Hospital
+NZ Address: 23
+
+Username: AUC@123auc
+Password: uptAuc123
+Email: auc@hospital.com
+Establishment Name: Auckland-City-Hospital
+Phone: 0800-2632
+NZ Address: 2-Park-Road-Grafton-Auckland-1023
+
+Username: WEL@123wel
+Password: uptWel123
+Email: welly@hospital.com
+Establishment Name: Wellington-Hospital
+Phone: 0800-6452
+NZ Address: 201-Murphys-Road-Wellington-2016
+
